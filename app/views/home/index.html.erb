@@ -1,14 +1,26 @@
 <html>
+  <%= form_for @changedate do |f| %>
   <body>
     <table>
       <tr>
         <td>
+          Digite a data que deseja:
         </td>
         <td>
+          <%= f.label :name %>
+          <%= f.datetime_field :date %>
         </td>
-        <td>
-        </td>
+     </tr>
+     <tr>
+      <td>
+        Digite quantos minutos deseja adiantar:
+      </td>
+      <td>
+        <%= f.label :value -%>
+        <%= f.number_field :value %>
+      </td>
      </tr>
     </table>
   </body>
+<% end -%>
 </html>
