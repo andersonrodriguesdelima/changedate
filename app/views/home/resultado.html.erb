@@ -1,9 +1,16 @@
 <html>
   <body>
+   <%= form_tag index_path, :method => 'get' do %>
   	<tr>
   	  <td>
   	   	A nova data é: <%= @datachange.to_s %>
   	  </td>
   	</tr>
+    <tr>
+      <td>
+        <%= submit_tag "Novo Cálculo", :name => nil %>
+      </td>
+    </tr>
+   <% end %>
   </body>
 </html>
