@@ -1,5 +1,5 @@
 <html>
-  <%= form_for @changedate do |f| %>
+  <%= form_tag resolver_path, :method => 'post' do %>
   <body>
     <table>
       <tr>
@@ -7,18 +7,29 @@
           Digite a data que deseja:
         </td>
         <td>
-          <%= f.label :name %>
-          <%= f.datetime_field :date %>
+          <%= datetime_field_tag :date, :params['date'] %>
         </td>
+     </tr>
+     <tr>
+       <td>
+         Digite qual operação deseja:
+       </td>
+       <td>
+        <%= text_field_tag :op, :params['op'] %>
+       </td>
      </tr>
      <tr>
       <td>
         Digite quantos minutos deseja adiantar:
       </td>
       <td>
-        <%= f.label :value -%>
-        <%= f.number_field :value %>
+        <%= number_field_tag :value, :params['value'] %>
       </td>
+     </tr>
+     <tr>
+       <td>
+         <%= submit_tag "Calcular", :name => nil %>
+       </td>
      </tr>
     </table>
   </body>
