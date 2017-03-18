@@ -2,9 +2,9 @@ class ChangeDate < ApplicationRecord
 
   def self.change_date(date, op, value)
     # Separando string para determinar quem é dia, mes, ano, hora, minuto
-    dia_atual     = date.split("T").first.split("-").first.to_i
+    dia_atual     = date.split("T").first.split("-").last.to_i
     mes_atual     = date.split("T").first.split("-").second.to_i
-    ano_atual     = date.split("T").first.split("-").last.to_i
+    ano_atual     = date.split("T").first.split("-").first.to_i
     horas_atual   = date.split("T").last.split(":").first#.to_i
     minutos_atual = date.split("T").last.split(":").last#.to_i
 
