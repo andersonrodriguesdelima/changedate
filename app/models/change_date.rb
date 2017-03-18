@@ -62,7 +62,7 @@ class ChangeDate < ApplicationRecord
       end
     end
 
-    puts "O valor final é #{dias_final}/#{mes_final}/#{ano_final} #{horas_final}:#{minutos_final}"
+    return "O valor final é #{dias_final}/#{mes_final}/#{ano_final} #{horas_final}:#{minutos_final}"
   end
 
   def self.ultimo_dia_mes(mes)
