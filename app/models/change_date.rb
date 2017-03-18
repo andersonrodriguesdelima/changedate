@@ -12,14 +12,14 @@ class ChangeDate < ApplicationRecord
     minutos    = value.to_f % 60
     dias       = horas.to_i / 24
 
-    minutos_final = minutos_atual.to_i + minutos.to_i
     dias_final  = dia_atual
     mes_final   = mes_atual
     ano_final   = ano_atual
     horas_final = horas_atual
 
     if op.eql? "+"
-      (1..horas.to_i).each do |x|
+    minutos_final = minutos_atual.to_i + minutos.to_i
+     (1..horas.to_i).each do |x|
         horas_final = horas_final.to_i + 1
         if horas_final == 24
           dias_final += 1
@@ -32,6 +32,32 @@ class ChangeDate < ApplicationRecord
         if mes_final > 12
           ano_final += 1 #= ano_final + 1
           mes_final = 1
+        end
+      end
+    end
+
+    if op.eql? "-"
+      minutos_final = minutos_atual.to_i
+      (1..minutos.to_i).each do |m|
+        minutos_final = minutos_final.to_i - 1  #- minutos.to_i
+        if minutos_final < 0
+          horas_final = horas_final.to_i - 1
+          minutos_final = 59
+        end
+      end
+      (1..horas.to_i).each do |x|
+        horas_final = horas_final.to_i - 1
+        if horas_final < 0
+          horas_final = horas_final + 24
+          dias_final -= 1
+        end
+        if dias_final < 0
+          mes_final  = mes_final - 1
+          if mes_final == 0
+            ano_final -= 1
+            mes_final = 12
+          end
+          dias_final = self.ultimo_dia_mes(mes_final)
         end
       end
     end
