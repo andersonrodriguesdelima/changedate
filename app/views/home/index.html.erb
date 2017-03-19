@@ -1,37 +1,42 @@
 <html>
-  <%= form_tag resultado_path, :method => 'post' do %>
   <body>
-    <table>
+   <%= form_tag resultado_path, :method => 'post' do %>
+    <table style="background-color: #C5C5C5; width:800px; height: 300px; margin-left: 500px; margin-top: 200px">
       <tr>
-        <td>
-          Digite a data que deseja:
+        <td style="width:375px; text-align: right; font-weight: bold;">
+          Digite a data:
         </td>
         <td>
           <%= datetime_field_tag :date, :params['date'] %>
         </td>
      </tr>
      <tr>
-       <td>
-         Digite qual operação deseja:
+       <td style="width:375px; text-align: right; font-weight: bold;">
+         Digite a operação*:
        </td>
        <td>
-        <%= text_field_tag :op, :params['op'] %>
+        <%= text_field_tag :operacao, :params['operacao'], :style => "Width: 30px" %>
        </td>
      </tr>
      <tr>
-      <td>
-        Digite quantos minutos deseja adiantar:
+      <td style="width:375px; text-align: right; font-weight: bold;">
+        Digite a quantidade de minutos:
       </td>
       <td>
-        <%= number_field_tag :value, :params['value'] %>
+        <%= number_field_tag :minutos, :params['minutos'], :style => "Width: 75px" %>
       </td>
      </tr>
      <tr>
-       <td>
+       <td style="width:375px; text-align: right; font-weight: bold;">
          <%= submit_tag "Calcular", :name => nil %>
        </td>
      </tr>
+     <tr style="height: 100px">
+       <td style="width:375px; text-align: right; font-weight: bold">
+         * Apenas operações de "+" e "-" são permitidas. 
+       </td>
+     </tr>
     </table>
+   <% end -%>
   </body>
-<% end -%>
 </html>

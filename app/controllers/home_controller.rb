@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   end
 
   def resultado
-    @datachange = ChangeDate.change_date(params[:date], params[:op], params[:value])
+    @datachange = ChangeDate.change_date(params[:date], params[:operacao], params[:minutos])
   end
 end
