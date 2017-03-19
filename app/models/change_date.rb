@@ -3,8 +3,8 @@ class ChangeDate < ApplicationRecord
   def self.change_date(date, operacao, minutos)
     return ArgumentError, "Data não pode ser vazia" if date.to_s.empty?
     return ArgumentError, "Operação não pode ser vazia" if operacao.to_s.empty?
-    return ArgumentError, "Minutos não pode ser vazio" if minutos.to_s.empty?
     return ArgumentError, "Operação inválida. Somente são permitidas as operações + e -" if !(["+", "-"].include? operacao)
+    return ArgumentError, "Minutos não pode ser vazio" if minutos.to_s.empty?
 
     # Separando string para determinar quem é dia, mes, ano, hora, minuto
     dia_atual     = date.split("T").first.split("-").last.to_i
